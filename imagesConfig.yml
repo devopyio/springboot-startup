@@ -1,0 +1,4 @@
+image: springboot/java8
+image1: springboot/java10
+image2: springbootjetty/java8
+image3: springbootjetty/java10
