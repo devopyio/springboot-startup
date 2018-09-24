@@ -30,7 +30,7 @@ func main() {
 	dockerServerAddr := dchub.Arg("addr", "Server address(domain, ip) on which to run the docker image.").Default("localhost").String()
 	dockerPort := dchub.Arg("port", "Docker port.").Default("8080").String()
 	dockerExposePort := dchub.Arg("expose-port", "Port on which the server will be exposed.").Default("8080").String()
-	cpusAmm := dchub.Arg("cpus", "The ammount of cpu to use.").Default(".5", ".75", "1", "1.5", "2").Strings()
+	cpusAmm := dchub.Arg("cpus", "The ammount of cpu to use.").Default("2").Strings()
 
 	if kingpin.MustParse(app.Parse(os.Args[1:])) == dchub.FullCommand() {
 		images, err := loadImagesFromConfig(*dockerImageConfig)
@@ -82,7 +82,7 @@ func loadImagesFromConfig(filename string) (map[string]string, error) {
 		return nil, fmt.Errorf("can't open the images file- %v, filename- %v", err, filename)
 	}
 
-	var images map[string]string
+	images := make(map[string]string)
 	err = yaml.Unmarshal(imagesFile, &images)
 	if err != nil {
 		return nil, fmt.Errorf("can't read the images file- %v, filename- %v", err, filename)
@@ -99,7 +99,6 @@ func buildImages(path string, images map[string]string) error {
 
 	for amm, file := range filesInDir {
 		if file.IsDir() {
-			fmt.Println(filepath.Join(path, file.Name(), "/"))
 			if err := exec.Command("sudo", "docker", "build", filepath.Join(path, file.Name()), "--tag", file.Name()).Run(); err != nil {
 				return fmt.Errorf("can't build the docker images: %v", err)
 			}

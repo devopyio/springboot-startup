@@ -1,0 +1,15 @@
+java 1.8
+
+1) cpus==".5"   ----> Started Application in 65.202 seconds (JVM running for 72.307)
+2) cpus==".75"  ----> Started Application in 44.208 seconds (JVM running for 48.264)
+3) cpus=="1"    ----> Started Application in 35.0   seconds (JVM running for 38.275)
+4) cpus=="1.25" ----> Started Application in 27.395 seconds (JVM running for 29.516)
+5) cpus=="2"    ----> Started Application in 16.164 seconds (JVM running for 17.311)
+
+java 1.8
+
+1) cpus==".5"   ----> Started Application in 57.696 seconds (JVM running for 64.423)
+2) cpus==".75"  ----> Started Application in 45.205 seconds (JVM running for 49.969)
+3) cpus=="1"    ----> Started Application in 32.991 seconds (JVM running for 36.308)
+4) cpus=="1.25" ----> Started Application in 28.289 seconds (JVM running for 30.915)
+5) cpus=="2"    ----> Started Application in 15.503 seconds (JVM running for 16.488)
